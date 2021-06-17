@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.25" type="template" client="site" method="upgrade">
+	<name>Halcyon</name>
+	<description>TPL_HALCYON_DESC</description>
+	<version>1.1.0</version>
+	<creationDate>2021.04.25</creationDate>
+	<author>NoName</author>
+	<authorEmail>robert123xd1@gmail.com</authorEmail>
+	<authorUrl>https://google.com</authorUrl>
+	<copyright>TPL_HALCYON_COPY</copyright>
+	<license>TPL_HALCYON_LICENSE</license>
+
+	<files>
+		<folder>php</folder>
+		<folder>css</folder>
+		<folder>fonts</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>404</folder>
+		<folder>language</folder>
+
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>error.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_thumbnail.php</filename>
+		<filename>template_preview.png</filename>
+	</files>
+
+	<positions>
+		<position>position-0</position>
+		<position>position-1</position>
+		<position>position-2</position>
+		<position>position-3</position>
+		<position>position-4</position>
+		<position>position-5</position>
+		<position>position-6</position>
+		<position>position-7</position>
+		<position>position-8</position>
+	</positions>
+
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field 
+					name="colorSite"
+					type="color"
+					label="TPL_HALCYON_COLOR_LABEL"
+					description="TPL_HALCYON_COLOR_DESC"
+				/>
+				<field 
+					name="urlWebSite"
+					type="url"
+					label="TPL_HALCYON_WEB_LINK_LABEL"
+					description="TPL_HALCYON_WEB_LINK_DESC"
+				/>
+				<field 
+					name="urlTwitSite"
+					type="url"
+					label="TPL_HALCYON_TWIT_LINK_LABEL"
+					description="TPL_HALCYON_TWIT_LINK_DESC"
+				/>
+				<field 
+					name="urlGmailSite"
+					type="url"
+					label="TPL_HALCYON_MAIL_LINK_LABEL"
+					description="TPL_HALCYON_MAIL_LINK_DESC"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+
+	<languages folder="language">
+		<language tag="ru-RU">ru-RU/ru-RU.tpl_halcyon.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.tpl_halcyon.sys.ini</language>
+
+		<language tag="en-GB">en-GB/en-GB.tpl_halcyon.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_halcyon.sys.ini</language>
+	</languages>
+
+</extension>
