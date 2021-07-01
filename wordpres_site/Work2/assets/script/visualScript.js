@@ -102,15 +102,17 @@ function videoPlayer() {
 
 // Anim footer Email input
 function animInput(input, color, activeColor) {
-	let getForm = input;
-	let getBody = document.getElementsByTagName('body')[0];
-	getForm.style.borderBottom = '1px solid ' + color;
+	if(input) {
+		let getForm = input;
+		let getBody = document.getElementsByTagName('body')[0];
+		getForm.style.borderBottom = '1px solid ' + color;
 
-	getForm.onclick = () => {
-		getForm.style.borderBottom = '1px solid ' + activeColor;
-		getBody.onclick = (e) => {
-			if(e.target.tagName != 'INPUT') {
-				getForm.style.borderBottom = '1px solid ' + color;
+		getForm.onclick = () => {
+			getForm.style.borderBottom = '1px solid ' + activeColor;
+			getBody.onclick = (e) => {
+				if(e.target.tagName != 'INPUT') {
+					getForm.style.borderBottom = '1px solid ' + color;
+				}
 			}
 		}
 	}

@@ -1,16 +1,20 @@
 jQuery(function($) {
-    $('.burger').click(function() {
-		$('#burger__list').toggle('easing');
-		$(this).toggleClass('active-x');
-	});
 
-	$(".pl_block .t-slide").each(function() {
-		let textBlock = $(this).text();
-		if(textBlock.length >= 200) {
-	    	$(this).data('full', $(this).html());
-	   		$(this).html($(this).html().substr(0, 200) + '...');
-	    }
-	});
+	// Cut Text Function
+
+	function cutText(elementWithText, numbLettersStart, numbLettersFinish) {
+		$(elementWithText).each(function() {
+			let textBlock = $(this).text();
+			if(textBlock.length >= 200) {
+				$(this).data('full', $(this).html());
+				$(this).html($(this).html().substr(numbLettersStart, numbLettersFinish) + '...');
+			}
+		});
+	}
+
+	cutText($(".pl_block .t-slide"), 0, 200);
+
+	// Wrap elements in elements
 
 	function wrapBlocks(itemWrap, parentWrap, countItem) {
 		const divs = itemWrap;
@@ -21,24 +25,39 @@ jQuery(function($) {
 	}
 
 	wrapBlocks($(".our-pluses__content > .pl_block"), "<div class='pl_slide-block'></div>", 3);
-	wrapBlocks($(".section-team__slider > .team-slide-block"), "<div class='section-team__slider-sec-block'></div>", 3);
-	$('.section-team__slider-sec-block').wrap("<div class='section-team__slider-res'></div>");
+	wrapBlocks($(".section-team__slider > .team-slide-block"), "<div class='section-team__slider-sec-block'</div>", 3);
+	wrapBlocks($(".section-team__slider-sec-block"), "<div class='section-team__slider-res'></div>", 1);
 
-	//Add icons to sldie-3 buttons
 
-	$('.social-block:first-child a').append('<i class="fa fa-dribbble" aria-hidden="true"></i>');
-	$('.social-block:nth-child(2) a').append('<i class="fa fa-twitter" aria-hidden="true"></i>');
-	$('.social-block:nth-child(3) a').append('<i class="fa fa-envelope" aria-hidden="true"></i>');
+	//Add icons to slide-3 buttons
+
+	function addElements(element, whereAddElement, methodAdd) {
+		switch (methodAdd) {
+			case 'append':
+				$(whereAddElement).append(element);
+				break;
+			case 'prepend':
+				$(whereAddElement).prepend(element);
+				break;
+			case 'after':
+				$(whereAddElement).after(element);
+				break;
+			case 'before':
+				$(whereAddElement).before(element);
+				break;
+			default:
+				console.error('Error: Wrong method name');
+		}
+	}
+	addElements('<i class="fa fa-dribbble" aria-hidden="true"></i>', '.social-block:first-child a', 'append');
+	addElements('<i class="fa fa-twitter" aria-hidden="true"></i>', '.social-block:nth-child(2) a', 'append');
+	addElements('<i class="fa fa-envelope" aria-hidden="true"></i>', '.social-block:last-child a', 'append');
 
 	//Add icons to Contacts
 
-	$('.contacts-blocks:first-child').prepend('<i class="fa fa-map-marker"></i>');
-	$('.contacts-blocks:nth-child(2)').prepend('<i class="fa fa-mobile"></i>');
-	$('.contacts-blocks:nth-child(3)').prepend('<i class="fa fa-paper-plane"></i>');
-
-	// Add views in the end article
-
-	$('.article-info .views').appendTo('.info-block');
+	addElements('<i class="fa fa-map-marker"></i>', '.contacts-blocks:first-child', 'prepend');
+	addElements('<i class="fa fa-mobile"></i>', '.contacts-blocks:nth-child(2)', 'prepend');
+	addElements('<i class="fa fa-paper-plane"></i>', '.contacts-blocks:nth-child(3)', 'prepend');
 
 
 	function customSlider(btn, elements, animation, durationAnimation, showElem) {
@@ -91,143 +110,17 @@ jQuery(function($) {
 	customSlider($('.our-pluses__content .radiobutton input'),$('.our-pluses__content .pl_slide-block'), 'showLeft', 400, false);
 	customSlider($('.section-team .radiobutton input'),$('.section-team .section-team__slider-res'), 'slideLeft', 1000, true);
 
-
-	// Animate when scrolling
-	let skroll = new Skroll({
-		mobile: true
-		})
-		.add('#header__content h1', {
-			animation: 'zoomIn',
-			delay:100,
-			duration: 1200
-		})
-		.add('#header__content p', {
-			animation: 'fadeInLeftBig',
-			delay:200,
-			duration: 1200
-		})
-		.add('#header__content a', {
-			animation: 'zoomIn',
-			delay: 100,
-			duration: 1200
-		})
-		.add('.h-theme-block:not(.res-blocks .h-theme-block)', {
-			animation: 'fadeInUp',
-			delay:100,
-			duration: 1200
-		})
-		.add('.section-block p', {
-			animation: 'rotateRightIn',
-			delay:100,
-			duration: 1200
-		})
-		.add('#our-motivation__block .our-motivation__blocks:first-child', {
-			animation: 'fadeInRight',
-			delay:100,
-			duration: 1200
-		})
-		.add('#our-motivation__block .our-motivation__blocks:nth-child(2)', {
-			animation: 'fadeInRight',
-			delay:200,
-			duration: 1200
-		})
-		.add('#our-motivation__block .our-motivation__blocks:nth-child(3)', {
-			animation: 'fadeInRight',
-			delay:300,
-			duration: 1200
-		})
-		.add('.secton-banner h1', {
-			animation: 'zoomIn',
-			delay:100,
-			duration: 1200
-		})
-		.add('.secton-banner h3', {
-			animation: 'zoomIn',
-			delay:200,
-			duration: 1200
-		})
-		.add('.section-our-pluses .pl_slide-block:first-child .pl_block', {
-			animation: 'slideInLeft',
-			delay:300,
-			duration: 500
-		})
-		.add('.secton-banner .arrow', {
-			animation: 'flipInX',
-			delay:500,
-			duration: 700
-		})
-		.add('.section-team__slider-res:first-child .team-slide-block', {
-			animation: 'growInRight',
-			delay:100,
-			duration: 300
-		})
-		.add('#app-content img', {
-			animation:{
-				start: function(el) {
-					$(el).css({
-						opacity: '0'
-					})
-				},
-				end: function(el) {
-					$(el).css({
-						opacity: '0.35'
-					})
-				}
-			},
-			delay:100,
-			duration: 2500
-		})
-		.add('.section-subscribe .fa-paper-plane', {
-			animation: 'fadeInLeft',
-			delay:100,
-			duration: 1200
-		})
-		.add('.section-subscribe p', {
-			animation: 'fadeInLeft',
-			delay:200,
-			duration: 1200
-		})
-		.add('.section-subscribe form', {
-			animation: 'zoomIn',
-			delay:400,
-			duration: 800
-		})
-		.add('.section-navivation .contacts-blocks', {
-			animation: 'zoomIn',
-			delay:100,
-			duration: 800
-		})
-	.init();
-
+	
 	// Create scroll to web team
 
-	$('.arrow').click(function() {
-		$('html, body').animate({
-		    scrollTop: $(".team-content").offset().top
-		}, 1000);
-	});
+	function scrollTo(startPointElem, endPointElem, transitionTime) {
+		$(startPointElem).click(function() {
+			$('html, body').animate({
+				scrollTop: $(endPointElem).offset().top
+			}, transitionTime);
+		});
+	}
 
-	// Create scroll to top
-
-	$('.btn-top').click(function() {
-		$('html, body').animate({
-		    scrollTop: $("#wraper").offset().top
-		}, 1000);
-	});
-
-	// Tilt Hover Effect
-
-	$('.contacts-blocks').tilt({
-	    maxTilt: 10
-	})
+	scrollTo($('.arrow'), $('.team-content'), 1000);
+	scrollTo($('.btn-top'), $('#wraper'), 1000);
 });
-
-// Check URL (fix bag for articles)
-
-let getUrl = window.location.href;
-let hostname = window.location.origin;
-console.log(getUrl);
-
-if(getUrl != hostname + '/joomla/index.php') {
-	console.log("It's not a home page");
-}

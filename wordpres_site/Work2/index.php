@@ -129,7 +129,6 @@
 				</div>
 			</section>
 			
-			<!-- Отредактировать с помощью Флексбоксов -->
 
 			<section class="about__our_service">
 				<div class="about__our_service-content grid">
@@ -187,7 +186,6 @@
 			</section>
 				</div>
 			
-			<!-- Отредактировать с помощью Флексбоксов -->
 			<section class="info__port">
 				<div class="info__port_blocks grid">
 					<div class="info__port_block">
@@ -356,8 +354,6 @@
 					</div>
 					<!-- A shortcode can be inserted here "[FinalTilesGallery id='1']"  -->
 				</div>
-
-				<!-- Сделать автодобавление через PHP изображения + Сделать коррекцию размеров изображения для корректного отображения -->
 
 			</section>
 			<aside class="map_coord">

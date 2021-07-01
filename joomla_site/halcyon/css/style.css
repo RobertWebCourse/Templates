@@ -82,22 +82,6 @@
 		margin: 0 auto;
 		width: 150px;
 	}
-	#wraper #contacts-content {
-		justify-content: center;
-		flex-wrap: wrap;
-	}
-	#wraper #contacts-content .contacts-blocks {
-		margin-top: 0;
-		min-width: 205px;
-		margin-right: 10px;
-		margin-bottom: 10px;
-	}
-	#wraper #contacts-content .contacts-blocks:last-child {
-		margin-right: 0;
-	}
-	#wraper #contacts-content .contacts-blocks p {
-		font-size: 14px;
-	}
 }
 
 @media(max-width: 425px) {
@@ -163,19 +147,15 @@
 	#wraper .our-pluses__content .pl_block .pl_img {
 		height: 165px;
 	}
-	#wraper .subscribe-content input[type='text'] {
+	#wraper .subscribe-content input[type='email'] {
 		max-width: 280px;
 	}
 	#wraper .subscribe-content input[type='submit'] {
 		margin-top: 20px;
 	}
-	#wraper #contacts-content .contacts-blocks {
-		margin-top: 10px;
-	}
 }
 
 #wraper {
-	overflow: hidden;
 	margin: 0 auto;
 	max-width: 1600px;
 }
@@ -544,6 +524,7 @@
 }
 
 .slide-res {
+	margin-top: 52px;
 	padding-bottom: 133px;
 	height: 14px;
 	display: flex;
@@ -684,7 +665,6 @@
 }
 
 .pl_img img {
-	object-fit: cover;
 	transition: all 0.3s ease;
 }
 
@@ -726,7 +706,6 @@
 .pl_img_content i {
 	z-index: 15;
 	font-size: 30px;
-	display: block;
 }
 
 .pl_img_content p {
@@ -738,6 +717,7 @@
 }
 
 .pl_block .pl_img img {
+	object-fit: cover;
 	width: 100%;
 	height: 100%;
 }
@@ -801,7 +781,6 @@
 }
 
 #app-content p {
-	margin-left: 0;
 	line-height: 76px;
 	text-align: center;
 	font-size: 15px;
@@ -836,7 +815,7 @@
 	margin-bottom: 100px;
 }
 
-.section-team .t-slide p{
+.section-team .t-slide {
 	display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -850,26 +829,30 @@
 	width: 100%;
 }
 
-.section-team__slider .team-slide-block {
-	max-width: 360px;
-}
-
 .section-team__slider-res {
 	min-width: 100%;
 	transition: all 0.2s ease;
+}
+
+
+.section-team__slider .team-slide-block {
+	max-width: 360px; 
 }
 
 .section-team__slider-sec-block {
 	justify-content: space-between;
 	align-items: center;
 	display: flex;
+	margin-bottom: 52px;
 }
 
 .team-slide-block img {
-	width: 225px;
-	height: 225px; 
-	object-fit: cover;
 	display: block;
+	min-width: 220px;
+	max-width: 230px;
+	min-height: 220px;
+	max-height: 230px;
+	object-fit: cover;
 	margin: 0 auto;
 	clip-path: polygon(45% 1.33975%, 46.5798% 0.60307%, 48.26352% 0.15192%, 50% 0%, 51.73648% 0.15192%, 53.4202% 0.60307%, 55% 1.33975%, 89.64102% 21.33975%, 91.06889% 22.33956%, 92.30146% 23.57212%, 93.30127% 25%, 94.03794% 26.5798%, 94.48909% 28.26352%, 94.64102% 30%, 94.64102% 70%, 94.48909% 71.73648%, 94.03794% 73.4202%, 93.30127% 75%, 92.30146% 76.42788%, 91.06889% 77.66044%, 89.64102% 78.66025%, 55% 98.66025%, 53.4202% 99.39693%, 51.73648% 99.84808%, 50% 100%, 48.26352% 99.84808%, 46.5798% 99.39693%, 45% 98.66025%, 10.35898% 78.66025%, 8.93111% 77.66044%, 7.69854% 76.42788%, 6.69873% 75%, 5.96206% 73.4202%, 5.51091% 71.73648%, 5.35898% 70%, 5.35898% 30%, 5.51091% 28.26352%, 5.96206% 26.5798%, 6.69873% 25%, 7.69854% 23.57212%, 8.93111% 22.33956%, 10.35898% 21.33975%);
 }
@@ -898,7 +881,8 @@
 	margin-right: 21px;
 }
 
-.social-block a {
+.social-block a{
+	text-decoration: none;
 	color: white;
 }
 
@@ -915,6 +899,7 @@
 }
 
 .section-subscribe {
+	background-position-x: center; 
 	position: relative;
 	color: white;
 	display: flex;
@@ -968,6 +953,10 @@
 	box-shadow: 0px 0px 32px 5px rgba(61,201,179,0.63);
 }
 
+.subscribe-content form input[type="email"].error {
+	box-shadow: 0px 0px 32px 5px rgba(111, 0, 0,0.63);
+}
+
 .subscribe-content form input[type="submit"] {
 	transition: all 0.3s ease;
 	cursor: pointer;
@@ -984,6 +973,10 @@
 
 .subscribe-content form input[type="submit"]:hover {
 	letter-spacing: 0.5em;
+}
+
+.subscribe-content form p.error {
+	color: #ff1201;
 }
 
 .section-subscribe .btn-top {
@@ -1029,13 +1022,11 @@
 	background-color: white;
 	text-align: center;
 	width: 31.5%;
-	margin-top: 29px;
-	font-size: 20px;
 }
 
-#contacts-content .contacts-blocks i {
+.contacts-blocks i {
 	margin-top: 29px;
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .contacts-blocks h3 {
@@ -1043,19 +1034,22 @@
 	letter-spacing: 0.15em;
 	color: #3dc9b3;
 	margin-top: 20px;
-}
-.contacts-blocks a {
-	text-decoration: none;
-	color: #8c9398;
+
 }
 .contacts-blocks p {
-	transition: 0.2s ease font-size;
-}
-.contacts-blocks p:last-child {
 	letter-spacing: 0;
 	color: #8c9398; 
 	margin-top: 29px;
 	padding-bottom: 29px;
+}
+
+.contacts-blocks a {
+	color: black;
+	text-decoration: none;
+}
+
+.team-slide__social i {
+	color: white;
 }
 
 .social-contacts {
