@@ -3,9 +3,9 @@ function ajaxInit (functionName) {
 }
 
 // Ajax
-ajaxInit(sendEmail());
-ajaxInit(sendEmailFromFooter());
-ajaxInit(sendImages());
+ajaxInit(sendEmail('.form__user form input[type="text"]', '.form__user form input[type="email"]', '.form__user form textarea', 'sendEmail', '.right__main'));
+ajaxInit(sendEmailFromFooter('.desc_footer input[type="email"]', '.desc_footer input[type="submit"]', '.errorMsgFooter'));
+ajaxInit(sendImages('.name-hack input[type="text"]', '.category-hack select', '.size-hack select', '.file-input input[type="file"]', '.our_happy_moments', ));
 
 // Burger
 ajaxInit(burgerAnimation());

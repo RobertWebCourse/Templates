@@ -1,6 +1,6 @@
 jQuery(function($) {
-	function sendEmail() {
-		let subButton = $('.section-subscribe input[type="submit"]');
+	function sendEmail(getEmailInput, getBtn) {
+		let subButton = $(getBtn);
 
 		subButton.click(function(e) {
 			e.preventDefault();
@@ -14,12 +14,11 @@ jQuery(function($) {
 				$('.subscribe-content form p.error').text('');
 			}
 
-			
-			let getEmail = $('.section-subscribe input[type="email"]').val();
+			let getEmail = $(getEmailInput).val();
 
 
 			$.ajax({
-				url: "templates/halcyon/php/form.php",
+				url: "templates/halcyon/ph/form.php",
 				type: "POST",
 				dataType: "json",
 				data: {
@@ -45,10 +44,10 @@ jQuery(function($) {
 			}
 
 			function errorSend (xhr, status, error) {
-				console.log(xhr.responseText)
+				console.log('Error: ' + xhr.responseText)
 			}
 		});
 	}
 
-	sendEmail();
+	sendEmail('.section-subscribe input[type="email"]', '.section-subscribe input[type="submit"]');
 });

@@ -26,13 +26,14 @@
 			"status" => false,
 			"type" => 1,
 			"message" => "Please enter info in inputs",
-			"fields" => $error_fields
+			"fields" => $error_fields,
 		];
 
 		echo json_encode($response);
 
 		die();
 	}
+
 
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		$error_fields[] = 'email';
